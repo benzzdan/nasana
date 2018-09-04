@@ -35,9 +35,11 @@ Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 Vue.use(VueCookie)
 
+let rootUrl = process.env.MIX_ROOT_URL
+let apiPort = process.env.MIX_API_PORT
 
 
-axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = rootUrl + ':' + apiPort + '/api';
 
 
 //Defining our routes

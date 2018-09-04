@@ -40373,6 +40373,7 @@ document.addEventListener('click', function (el) {
         return {
             //URL de la app
             rootUrl: "http://localhost",
+            apiPort: Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_ROOT_URL":"http://localhost","NODE_ENV":"development"}).MIX_API_PORT,
             //info de registro
             name: '',
             loadingReg: false,
@@ -40463,7 +40464,7 @@ document.addEventListener('click', function (el) {
                 this.isLoading = false;
             } else {
 
-                axios.get(this.rootUrl + ':8000/api/auth/usernamecheck', {
+                axios.get(this.rootUrl + ':' + this.apiPort + '/api/auth/usernamecheck', {
                     params: {
                         username: vm.username
                     }
@@ -40511,7 +40512,7 @@ document.addEventListener('click', function (el) {
                 } else {
                     this.emailErrors = [];
                     this.error = false;
-                    axios.get(this.rootUrl + ':8000/api/auth/emailcheck', {
+                    axios.get(this.rootUrl + ':' + this.apiPort + '/api/auth/emailcheck', {
                         params: {
                             email: vm.email
                         }
@@ -43263,7 +43264,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_16_vue_cookie___default.a);
 
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.baseURL = 'http://localhost:8000/api';
+var rootUrl = "http://localhost";
+var apiPort = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_ROOT_URL":"http://localhost","NODE_ENV":"development"}).MIX_API_PORT;
+
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.baseURL = rootUrl + ':' + apiPort + '/api';
 
 //Defining our routes
 
