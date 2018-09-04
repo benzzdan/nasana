@@ -123,6 +123,8 @@ import _ from 'lodash'
     export default {
         data(){
             return {
+                //URL de la app
+                rootUrl: process.env.MIX_ROOT_URL,
                 //info de registro
                 name: '',
                 loadingReg: false,
@@ -217,7 +219,7 @@ import _ from 'lodash'
 
 
 
-               axios.get('http://localhost:8000/api/auth/usernamecheck', {
+               axios.get(this.rootUrl+':8000/api/auth/usernamecheck', {
                    params: {
                        username: vm.username
                    }
@@ -270,7 +272,7 @@ import _ from 'lodash'
             }else {
                 this.emailErrors = []
                 this.error = false
-               axios.get('http://localhost:8000/api/auth/emailcheck', {
+               axios.get(this.rootUrl+':8000/api/auth/emailcheck', {
                    params: {
                        email: vm.email
                    }
